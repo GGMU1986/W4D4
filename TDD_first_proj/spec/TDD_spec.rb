@@ -52,7 +52,7 @@ end
 
 describe "TowersOfHanoi" do 
     subject(:board) { TowersOfHanoi.new }
-    let(:board) { double("Board", rows_sorted?: true) } #=> [[4,3,2,1], [], []]
+    let(:board) { double("Board", grid, rows_sorted?: true) } #=> [[4,3,2,1], [], []]
     describe "#move" do 
         subject(:pair_1) { [0, 1] }
         subject(:pair_2) { [1, 2] }
@@ -64,7 +64,7 @@ describe "TowersOfHanoi" do
 
             it "moves discs from one pile to another" do
                 board.move(pair_1)
-                expect(grid).to eq([[4,3,2],[1],[]])
+                expect(board.grid).to eq([[4,3,2],[1],[]])
             end
 
             it "should not raise an error" do 
@@ -81,10 +81,16 @@ describe "TowersOfHanoi" do
 
             it "checks that player is not moving a bigger block onto a smaller block" do 
                 allow(board).to recieve(rows_sorted?).and_return(false)
-                expect{  }.to raise_error("")
+                expect{ board.move(pair_1) }.to raise_error("You cannot move on top of a smaller piece!")
             end
 
         end
 
+    end
+
+    describe "#won" do 
+        it "checks if all blocks are in last column"
+            expect(board.grid).to eq([[],[],[4,3,2,1]])
+        end
     end
 end
