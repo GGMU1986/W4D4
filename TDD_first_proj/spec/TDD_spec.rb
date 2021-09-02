@@ -51,28 +51,38 @@ describe "stock_picker" do
 end
 
 describe "TowersOfHanoi" do 
-    subject(:game) { TowersOfHanoi.new }
-    let(:board) { double("Board", rows_sorted?: true) } #=> [[1,2,3,4], [], []]
+    subject(:board) { TowersOfHanoi.new }
+    let(:board) { double("Board", rows_sorted?: true) } #=> [[4,3,2,1], [], []]
     describe "#move" do 
         subject(:pair_1) { [0, 1] }
         subject(:pair_2) { [1, 2] }
         subject(:pair_3) { [2, 0] }
         subject(:pair_4) { [3, 9] }
-        context " with valid moves" do
+        let(:grid) { [[4,3,2,1], [], []] }
 
-            it "raises an error when provided an invalid pos" do
-                expect {board.move(pair_1)}.not_to raise_error
-                expect {board.move(pair_3)}.to raise_error("This is not a valid move!")
-                allow(board).to recieve(rows_sorted?).and_return(false)
-                expect{ Piece.new(:white, [9, 9], board)}.to raise_error("Invalid pos")
+        context "with valid moves" do
+
+            it "moves discs from one pile to another" do
+                board.move(pair_1)
+                expect(grid).to eq([[4,3,2],[1],[]])
             end
+
+            it "should not raise an error" do 
+                expect {board.move(pair_1)}.not_to raise_error
+            end 
+
         end
 
-        it "checks that player is not moving a bigger block onto a smaller block" do 
+        context "with invalid moves" do
+            
+            it "raises an error when provided an invalid pos" do
+                expect {board.move(pair_3)}.to raise_error("This is not a valid move!")
+            end
 
-        end
-
-        it "" do 
+            it "checks that player is not moving a bigger block onto a smaller block" do 
+                allow(board).to recieve(rows_sorted?).and_return(false)
+                expect{  }.to raise_error("")
+            end
 
         end
 
