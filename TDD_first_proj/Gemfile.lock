@@ -22,7 +22,7 @@ GEM
     rspec-support (3.10.2)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   byebug
@@ -30,4 +30,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.17.2
+   2.2.25

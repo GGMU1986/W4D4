@@ -30,3 +30,16 @@ class Array
     end
     
 end
+
+def stock_picker(stock_prices)
+    hash = {}
+    stock_prices.each_with_index do |stock_price_1, i|
+        stock_prices.each_with_index do |stock_price_2, j|
+            if j > i 
+                hash[stock_price_2 - stock_price_1] = [i, j]
+            end
+        end
+    end
+    hash.sort_by { |k, v| k }.last.last
+end
+

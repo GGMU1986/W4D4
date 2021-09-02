@@ -18,7 +18,7 @@ describe Array do
 
     describe "#two_sum" do
         subject(:array) { [-1,0,2,-2,1] } 
-        
+
         it "returns indices of elements that sum to zero" do
             expect(array.two_sum).to eq([[0,4],[2,3]])
         end
@@ -36,5 +36,19 @@ describe Array do
             matrix.my_transpose
             expect(matrix).to be(matrix_copy)
         end
+        
     end
+
+
+end
+
+describe "stock_picker" do
+    subject(:stock_george) { [100, 50, 1000, 2] }
+    subject(:stock_neil) { [3, 9, 15, 25, 100, 1000, 1005, 50, 2] }
+
+    it "returns an array of indices a pair of days to buy and sell a stock for maximum profit" do
+        expect(stock_picker(stock_george)).to eq([1,2]) 
+        expect(stock_picker(stock_neil)).to eq([0,6])
+    end
+
 end
