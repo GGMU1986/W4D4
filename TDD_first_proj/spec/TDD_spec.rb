@@ -18,7 +18,7 @@ describe Array do
 
     describe "#two_sum" do
         subject(:array) { [-1,0,2,-2,1] } 
-
+        
         it "returns indices of elements that sum to zero" do
             expect(array.two_sum).to eq([[0,4],[2,3]])
         end
@@ -36,9 +36,7 @@ describe Array do
             matrix.my_transpose
             expect(matrix).to be(matrix_copy)
         end
-        
     end
-
 
 end
 
